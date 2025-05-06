@@ -1,0 +1,82 @@
+// @import "~font-awesome/css/font-awesome.min.css";
+
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    padding: 2em;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+button {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    /* Aligns buttons with space between them */
+    justify-content: space-between;
+    /* Adjust width as needed */
+    width: auto;
+}
+
+.btn-back,
+.btn-submit {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.password-container {
+    // display: flex;
+    // align-items: center;
+    position: relative;
+}
+
+.toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+// .password-input {
+//     padding: 10px;
+//     margin-right: 5px;
+// }
+
+// .toggle-button {
+//     background: none;
+//     border: none;
+//     cursor: pointer;
+// }
+
+// .toggle-button i {
+//     font-size: 15px;
+// }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Apply blur */
+    backdrop-filter: blur(1px);
+    /* Ensure it's on top */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-progress-bar {
+    /* Adjust as needed */
+    width: 50%;
+}

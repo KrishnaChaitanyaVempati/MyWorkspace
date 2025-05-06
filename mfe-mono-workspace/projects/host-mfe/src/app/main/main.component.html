@@ -1,0 +1,42 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" routerLink="/homePage/home" routerLinkActive="active" data-bs-toggle="tab"
+            aria-selected="true" role="tab">Home</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" routerLink="/homePage/todo-list" routerLinkActive="active"
+            aria-selected="false" tabindex="-1" role="tab" (click)="onTodoList()">TodoList</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" routerLink="/homePage/products-list" routerLinkActive="active"
+            aria-selected="false" tabindex="-1" role="tab">Products List</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" data-bs-toggle="tab" routerLink="/homePage/dell-items" routerLinkActive="active"
+            aria-selected="false" tabindex="-1" role="tab">Dell items</a>
+    </li>
+    <!-- <li>
+        <a class="nav-link" data-bs-toggle="tab" routerLink="/homePage/web-items" routerLinkActive="active" aria-selected="false"
+            tabindex="-1" role="tab">Web component</a> -->
+    <!-- <mfe5-web-app></mfe5-web-app>
+      <script src="./assets/mfe5-webcomponent-webcomponent.js" defer></script> -->
+    <!-- </li> -->
+
+    <li class="nav-item" role="presentation" *ngIf="isTodoList">
+        <button mat-raised-button color="primary" type="submit" (click)="sendDataToMFE2()">Send Data</button>
+    </li>
+    <li class="nav-item" role="presentation" style="margin-left: 10px;" *ngIf="isTodoList">
+        <button mat-raised-button color="primary" type="submit" (click)="resetDataToMFE2()">Reset</button>
+    </li>
+    <li>
+        <button mat-raised-button color="primary" type="submit" style="margin-left: 10px;"
+            (click)="logout()">Logout</button>
+    </li>
+    <!-- AuthGuardGuard -->
+</ul>
+<!-- <a routerLink="/" routerLinkActive="active">Home</a> &nbsp;&nbsp; -->
+<!-- <a routerLink="/todo-list" routerLinkActive="active">TodoList</a> &nbsp;&nbsp; -->
+<!-- <a routerLink="/products-list" routerLinkActive="active">Products List</a> &nbsp;&nbsp; -->
+<!-- <a routerLink="/dell-items" routerLinkActive="active">Dell items</a> -->
+<!-- <br><br> -->
+<router-outlet></router-outlet>

@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-label>
+        <h3>Login</h3>
+    </mat-label>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <div class="password-container">
+                <!-- <input matInput type="password" formControlName="password" required> -->
+                <input matInput [type]="passwordFieldType" formControlName="password" required>
+                <span class="toggle-icon" (click)="togglePasswordVisibility()">
+                    <i [class]="passwordFieldType === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                </span>
+            </div>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+    
+    <!-- <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar> -->
+    <div class="overlay" *ngIf="isLoading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+</mat-card>

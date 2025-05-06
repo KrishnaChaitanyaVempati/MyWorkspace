@@ -1,0 +1,85 @@
+<mat-card>
+    <mat-label>
+        <h3>SignUp</h3>
+    </mat-label>
+    <form [formGroup]="signupForm" (ngSubmit)="onSignUpSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="signupForm.get('username').hasError('required')">
+                Username is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+            <mat-error *ngIf="signupForm.get('email').hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.get('email').hasError('email')">
+                Please enter a valid email address
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <div class="password-container">
+                <!-- <input matInput type="password" formControlName="password" required> -->
+                <input matInput [type]="passwordFieldType" formControlName="password" required>
+                <span class="toggle-icon" (click)="togglePasswordVisibility()">
+                    <i [class]="passwordFieldType === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                </span>
+
+                <!-- <button type="button" (click)="togglePasswordVisibility()" class="toggle-button">
+                    <i [class]="passwordFieldType === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                    
+                </button> -->
+            </div>
+            <mat-error *ngIf="signupForm.get('password').hasError('required')">
+                Password is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.get('password').hasError('minlength')">
+                Password must be at least 6 characters long
+            </mat-error>
+            
+        </mat-form-field>
+
+        <!-- *ngIf="signupForm.get('password')?.dirty" -->
+        <div class="text-red-400 text-sm">
+            <span class="block"
+                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('^(?=.*[A-Z])')}">At least one
+                uppercase
+                letter.</span>
+                <br>
+            <span class="block"
+                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('(?=.*[a-z])')}">At least one
+                lowercase
+                letter.</span><br>
+            <span class="block"
+                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('(.*[0-9].*)')}">At least one
+                digit.</span><br>
+            <span class="block"
+                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('(?=.*[!@#$%^&*])')}">At least
+                one
+                special
+                character.</span><br>
+            <span class="block" [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('.{8,}')}">At
+                least 8 characters
+                long.</span>
+                <br>
+        </div>
+
+        <div class="button-container">
+            <button mat-raised-button class="btn-back" color="primary" (click)="onClickBack()">Back</button>
+            <button mat-raised-button class="btn-submit" color="accent" type="submit"
+                [disabled]="!signupForm.valid">Sign Up</button>
+            <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign Up</button> -->
+        </div>
+    </form>
+
+    <!-- <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar> -->
+    <div class="overlay" *ngIf="isLoading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+</mat-card>
