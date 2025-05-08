@@ -29,10 +29,10 @@ module.exports = {
     new ModuleFederationPlugin({
 
       // to avoid Uncaught SyntaxError: Unexpected token 'export' (at remoteEntry.js:3403:10)
-      library: { type: "module" },
+      // library: { type: "module" },
 
       // For remotes (please adjust)
-      name: "hostMfe",
+      // name: "hostMfe",
       // filename: "remoteEntry.js",
       // exposes: {
       //     './Component': './projects/host-mfe/src/app/app.component.ts',
@@ -40,12 +40,11 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        //"mfe2": "http://localhost:4300/remoteEntry.js",
-        //"mfe3": "http://localhost:4400/remoteEntry.js",
         "mfe2": "mfe2@http://localhost:4300/remoteEntry.js",
         "mfe3": "mfe3@http://localhost:4400/remoteEntry.js",
         "mfe4": "mfe4@http://localhost:4500/remoteEntry.js",
         // "mfe5Webcomponent":"mfe5Webcomponent@http://localhost:4600/remoteEntry.js"
+
       },
 
       shared: share({

@@ -12,11 +12,11 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule, 
-    // ProductsListRoutingModule
-    RouterModule.forChild([
-      //{ path: '', redirectTo: '/mfe-products-list', pathMatch: 'full' },
-      { path: '', component: ProductsListComponent }
-    ])
+    ProductsListRoutingModule
+    // RouterModule.forChild([
+    //   //{ path: '', redirectTo: '/mfe-products-list', pathMatch: 'full' },
+    //   // { path: '', component: ProductsListComponent }
+    // ])
   ]
 })
 export class ProductsListModule { }

@@ -23,11 +23,13 @@ export class MainComponent implements OnInit{
   sendDataToMFE2() {
     const event = new CustomEvent('event', { detail: this.counter += 1 });
     dispatchEvent(event);
+    sessionStorage.setItem('counter', this.counter.toString());
   }
 
   resetDataToMFE2() {
     const event = new CustomEvent('event', { detail: this.counter = 0 });
     dispatchEvent(event);
+    sessionStorage.setItem('counter', '0');
   }
 
   onTodoList() {
@@ -36,6 +38,8 @@ export class MainComponent implements OnInit{
 
   logout(){
     this.authService.logout();
+    sessionStorage.setItem('counter', '0');
+    
     // this.router.navigate(['/homeLogin']);
     this.router.navigate(['/homeLogin/login']);
   }

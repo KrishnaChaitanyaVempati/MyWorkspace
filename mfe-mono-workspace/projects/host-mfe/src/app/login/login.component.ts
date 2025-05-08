@@ -5,6 +5,7 @@ import { AuthService } from '../shared-service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpApiService } from '../shared-service/http-api.service';
 import { JWTTokenService } from '../shared-service/jwttoken.service';
+import { environment } from 'projects/mfe5-webcomponent/src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -60,40 +61,58 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit(): void {
 
-    if (this.loginForm.valid) {
+    if (environment.production) {
 
-      const { username, password } = this.loginForm.value;
-      console.log('Username:', username);
-      //console.log('Password:', password);
+      if (this.loginForm.valid) {
 
-      const data = {
-        userName: username,
-        password: password,
-      };
+        const { username, password } = this.loginForm.value;
+        console.log('Username:', username);
+        //console.log('Password:', password);
 
-      this.apiService.loginApi(data).subscribe({
-        next: (response) => {
-          console.log('Success:', response);
-          this.jwtToken = response;
+        const data = {
+          userName: username,
+          password: password,
+        };
 
-          localStorage.setItem('user_name', username);
-          localStorage.setItem('JWT_Token', this.jwtToken);
-          this.jwtService.setToken(this.jwtToken);
+        this.apiService.loginApi(data).subscribe({
+          next: (response) => {
+            console.log('Success:', response);
+            this.jwtToken = response;
 
-          if (this.authService.login(username, password)) {
-            this.router.navigate(['/homePage']);
-          } else {
-            alert('Invalid credentials');
-          }
+            localStorage.setItem('user_name', username);
+            localStorage.setItem('JWT_Token', this.jwtToken);
+            this.jwtService.setToken(this.jwtToken);
 
-        },
-        error: (error) => {
-          console.error('Error:', error);
-        },
-      });
+            if (this.authService.login(username, password)) {
+              this.router.navigate(['/homePage']);
+            } else {
+              alert('Invalid credentials');
+            }
+
+          },
+          error: (error) => {
+            console.error('Error:', error);
+          },
+        });
 
 
+      }
+    } else {
+      if (this.loginForm.valid) {
+
+        const { username, password } = this.loginForm.value;
+        console.log('Username:', username);
+        localStorage.setItem('user_name', username);
+
+        if (this.authService.login(username, password)) {
+          this.router.navigate(['/homePage']);
+        } else {
+          alert('Invalid credentials');
+        }
+
+      }
     }
+
   }
 
   onSignUpSubmit() {

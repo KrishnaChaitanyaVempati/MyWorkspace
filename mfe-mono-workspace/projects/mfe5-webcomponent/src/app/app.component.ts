@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private router: Router){}
 
   ngOnInit(): void {
+    console.log('mfe5 web component')
     this.router.initialNavigation();
     // this.router.navigate([{outlets:{mfeProducts:'mfe-products'}}])
   }

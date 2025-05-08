@@ -15,12 +15,12 @@
         <a class="nav-link" data-bs-toggle="tab" routerLink="/homePage/dell-items" routerLinkActive="active"
             aria-selected="false" tabindex="-1" role="tab">Dell items</a>
     </li>
-    <!-- <li>
+    <li>
         <a class="nav-link" data-bs-toggle="tab" routerLink="/homePage/web-items" routerLinkActive="active" aria-selected="false"
-            tabindex="-1" role="tab">Web component</a> -->
+            tabindex="-1" role="tab">Web component</a>
     <!-- <mfe5-web-app></mfe5-web-app>
       <script src="./assets/mfe5-webcomponent-webcomponent.js" defer></script> -->
-    <!-- </li> -->
+    </li>
 
     <li class="nav-item" role="presentation" *ngIf="isTodoList">
         <button mat-raised-button color="primary" type="submit" (click)="sendDataToMFE2()">Send Data</button>
@@ -30,7 +30,7 @@
     </li>
     <li>
         <button mat-raised-button color="primary" type="submit" style="margin-left: 10px;"
-            (click)="logout()">Logout</button>
+            (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
     </li>
     <!-- AuthGuardGuard -->
 </ul>

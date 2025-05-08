@@ -15,7 +15,23 @@ module.exports = {
     scriptType: "text/javascript"
   },
   optimization: {
-    runtimeChunk: false
+    runtimeChunk: false,
+    chunkIds: 'named',
+
+    // splitChunks: {
+    //   cacheGroups: {
+    //     vendor: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name: 'vendor',
+    //       chunks: 'all',
+    //     },
+    //   },
+    // },
+
+    // splitChunks: {
+    //   chunks: 'all',
+    //   filename: 'bundle.js',
+    // }
   },
   resolve: {
     alias: {
@@ -33,8 +49,9 @@ module.exports = {
       name: "mfe5Webcomponent",
       filename: "remoteEntry.js",
       exposes: {
-        // './Mfe5AngularElement': './projects/mfe5-webcomponent/src/bootstrap.ts'
-        './AppModule': './projects/mfe5-webcomponent/src/app/app.module.ts',
+        './Mfe5AngularElement': './projects/mfe5-webcomponent/src/app/app.module.ts',
+        // './Mfe5AngularElement': './projects/mfe5-webcomponent/src/bootstrap.ts',
+        // './AppModule': './projects/mfe5-webcomponent/src/app/app.module.ts',
         // './AppComponent':'./projects/mfe5-webcomponent/src/app/app.component.ts'
       },
 

@@ -12,4 +12,8 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductsListRoutingModule { }
+export class ProductsListRoutingModule {
+  constructor(){
+    console.log("product mfe3 routing module")
+  }
+ }

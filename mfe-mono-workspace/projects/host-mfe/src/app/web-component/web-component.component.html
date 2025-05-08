@@ -1,2 +1,25 @@
 <p>web-component works!</p>
-<!-- <mfe5-web-app *axLazyElement="MFE5_APP_URL"></mfe5-web-app> -->
+<ng-template #error>Loading failed...</ng-template>
+
+<!-- <div *ngIf="flag">
+    <p>first one</p>
+    <mfe2-web-app *axLazyElement="MFE5_APP_URL; errorTemplate: error" ></mfe2-web-app>
+</div> -->
+
+
+<!-- <mfe5-web-app></mfe5-web-app> -->
+
+<!-- working -->
+<p>second one</p>
+<mfe-web-app></mfe-web-app>
+
+<!-- working -->
+<p>third one</p>
+<div id="loadWebComp">
+
+</div>
+
+<!-- unable to load script here but script loading in index.html -->
+<!-- <script src="./assets/mfe-webcomponent.js"></script> -->
+<!-- <script src="http://localhost:4700/assets/mfe-webcomponent.js"></script> -->
+<!-- <script src="./assets/mfe5-webcomponent-webcomponent.js" defer></script> -->

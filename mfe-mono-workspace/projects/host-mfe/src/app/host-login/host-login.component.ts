@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../shared-service/auth.service';
 import { HttpApiService } from '../shared-service/http-api.service';
 import { JWTTokenService } from '../shared-service/jwttoken.service';
+import { environment } from 'projects/mfe5-webcomponent/src/environments/environment';
 
 @Component({
   selector: 'app-host-login',
@@ -38,42 +39,60 @@ export class HostLoginComponent implements OnInit {
   }
 
   onLoginSubmit(): void {
-    if (this.loginForm.valid) {
 
-      const { username, password } = this.loginForm.value;
-      console.log('Username:', username);
-      //console.log('Password:', password);
+    if (environment.production) {
+      if (this.loginForm.valid) {
 
-      const data = {
-        userName: username,
-        password: password,
-      };
+        const { username, password } = this.loginForm.value;
+        console.log('Username:', username);
+        //console.log('Password:', password);
 
-      // added for loading bar
-      this.isLoading = true;
-      this.apiService.loginApi(data).subscribe({
-        next: (response) => {
-          this.isLoading = false;
-          console.log('Success:', response);
-          this.jwtToken = response;
+        const data = {
+          userName: username,
+          password: password,
+        };
 
-          localStorage.setItem('user_name', username);
-          localStorage.setItem('JWT_Token', this.jwtToken);
-          this.jwtService.setToken(this.jwtToken);
+        // added for loading bar
+        this.isLoading = true;
+        this.apiService.loginApi(data).subscribe({
+          next: (response) => {
+            this.isLoading = false;
+            console.log('Success:', response);
+            this.jwtToken = response;
 
-          if (this.authService.login(username, password)) {
-            this.router.navigate(['/homePage']);
-          } else {
-            alert('Invalid credentials');
-          }
+            localStorage.setItem('user_name', username);
+            localStorage.setItem('JWT_Token', this.jwtToken);
+            this.jwtService.setToken(this.jwtToken);
 
-        },
-        error: (error) => {
-          this.isLoading = false;
-          console.error('Error:', error);
-          alert('UnAuthorized: Invalid credentials');
-        },
-      });
+            if (this.authService.login(username, password)) {
+              this.router.navigate(['/homePage']);
+            } else {
+              alert('Invalid credentials');
+            }
+
+          },
+          error: (error) => {
+            this.isLoading = false;
+            console.error('Error:', error);
+            alert('Unauthorized: Invalid credentials');
+          },
+        });
+      }
+    } else {
+      if (this.loginForm.valid) {
+
+        const { username, password } = this.loginForm.value;
+        console.log('Username:', username);
+        localStorage.setItem('user_name', username);
+
+        if (this.authService.login(username, password)) {
+          this.router.navigate(['/homePage']);
+        } else {
+          alert('Invalid credentials');
+        }
+
+      }
     }
+
   }
 }

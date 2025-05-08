@@ -61,19 +61,9 @@ const routes: Routes = [
           }).then(m => m.MfeProductsComponent).catch(err => console.log(err));
         }
       },
-      /*{
-        path: 'web-items', pathMatch: 'prefix', component: WebComponentWrapper,
-        data: {
-          type: 'module',
-          remoteEntry: MFE5_APP_URL,
-          remoteName: "mfe5Webcomponent",
-          exposedModule: "./Mfe5AngularElement",
-          elementName: 'mfe5-web-app'
-        } as WebComponentWrapperOptions
-
-      }*/
+      {path: 'web-items', component:WebComponentComponent}
       // {
-      //   matcher: startsWith('web-items'), component: WebComponentWrapper,
+      //   path: 'web-items', pathMatch: 'prefix', component: WebComponentWrapper,
       //   data: {
       //     type: 'module',
       //     remoteEntry: MFE5_APP_URL,
@@ -81,8 +71,20 @@ const routes: Routes = [
       //     exposedModule: "./Mfe5AngularElement",
       //     elementName: 'mfe5-web-app'
       //   } as WebComponentWrapperOptions
-
       // }
+
+      // {
+      //   // used because microfrontend has own router -> mfe needs to have same path
+      //   matcher: startsWith('web-items'), component: WebComponentWrapper,
+      //   data: {
+      //     type: 'script',
+      //     remoteEntry: MFE5_APP_URL,
+      //     remoteName: "mfe5Webcomponent",
+      //     exposedModule: "./Mfe5AngularElement",
+      //     elementName: 'mfe5-web-app'
+      //   } as WebComponentWrapperOptions
+      // }
+      
       // {
       //   matcher: startsWith('web-items'), loadComponent: () => {
       //     return loadRemoteModule({

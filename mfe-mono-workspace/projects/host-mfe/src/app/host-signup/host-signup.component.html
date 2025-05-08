@@ -46,30 +46,30 @@
         </mat-form-field>
 
         <!-- *ngIf="signupForm.get('password')?.dirty" -->
-        <div class="text-red-400 text-sm">
+        <!-- text-success: green; text-primary: blue; text-danger: red -->
+        <div class="text-danger text-sm">
             <span class="block"
-                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('^(?=.*[A-Z])')}">At least one
+                [ngClass]="{'text-success': signupForm.get('password')?.value?.match('^(?=.*[A-Z])')}">At least one
                 uppercase
                 letter.</span>
                 <br>
             <span class="block"
-                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('(?=.*[a-z])')}">At least one
+                [ngClass]="{'text-success': signupForm.get('password')?.value?.match('(?=.*[a-z])')}">At least one
                 lowercase
                 letter.</span><br>
             <span class="block"
-                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('(.*[0-9].*)')}">At least one
+                [ngClass]="{'text-success': signupForm.get('password')?.value?.match('(.*[0-9].*)')}">At least one
                 digit.</span><br>
             <span class="block"
-                [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('(?=.*[!@#$%^&*])')}">At least
+                [ngClass]="{'text-success': signupForm.get('password')?.value?.match('(?=.*[!@#$%^&*])')}">At least
                 one
                 special
                 character.</span><br>
-            <span class="block" [ngClass]="{'text-primary': signupForm.get('password')?.value?.match('.{8,}')}">At
+            <span class="block" [ngClass]="{'text-success': signupForm.get('password')?.value?.match('.{8,}')}">At
                 least 8 characters
                 long.</span>
-                <br>
         </div>
-
+        <br>
         <div class="button-container">
             <button mat-raised-button class="btn-back" color="primary" (click)="onClickBack()">Back</button>
             <button mat-raised-button class="btn-submit" color="accent" type="submit"

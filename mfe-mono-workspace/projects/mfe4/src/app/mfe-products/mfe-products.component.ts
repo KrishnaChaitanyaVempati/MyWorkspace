@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './mfe-products.component.html',
-  styleUrls: ['./mfe-products.component.scss']
+  styleUrls: ['./mfe-products.component.scss'],
 })
 export class MfeProductsComponent {
 
